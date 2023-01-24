@@ -1,7 +1,7 @@
 'use client';
 
 import { allPostsQuery } from 'lib/sanity.queries';
-import { usePreview } from '../lib/sanity.preview';
+import { usePreview } from 'lib/sanity.preview';
 import BlogList from './BlogList';
 
 export default function PreviewBlogList() {

@@ -12,7 +12,7 @@ export const structure = (S: StructureBuilder) =>
             .items([
               S.listItem().title('Posts').child(S.documentTypeList('post').title('Posts')),
               S.listItem().title('Authors').child(S.documentTypeList('author').title('Authors')),
-              S.listItem().title('Topics').child(S.documentTypeList('topic').title('Topics')),
+              S.listItem().title('Topics').child(S.documentTypeList('topics').title('Topics')),
             ])
         ),
       S.listItem()

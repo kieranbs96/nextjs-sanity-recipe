@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --black: hsla(30, 11%, 4%, 1);
+  --gray: hsla(23, 39%, 85%, 1);
+  --green: hsla(127, 8%, 42%, 1);
+  --blue: hsla(179, 78%, 42%, 1);
+  --pink: hsla(299, 22%, 63%, 1);
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.5s;
+}

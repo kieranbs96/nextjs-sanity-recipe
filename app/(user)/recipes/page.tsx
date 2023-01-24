@@ -23,5 +23,10 @@ export default async function Home() {
 
   const recipes = await getAllRecipes();
 
-  return <RecipeList recipes={recipes} />;
+  return (
+    <div className="flex flex-col w-full">
+      <div>Filters</div>
+      <RecipeList recipes={recipes} />
+    </div>
+  );
 }

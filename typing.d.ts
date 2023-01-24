@@ -24,7 +24,7 @@ interface Post extends Base {
 interface Recipe extends Base {
   author: Author;
   body: Block[];
-  cuisine: null;
+  cuisine: Cuisine[];
   ingredients: Ingredient[];
   mainImage: Image;
   slug: Slug;

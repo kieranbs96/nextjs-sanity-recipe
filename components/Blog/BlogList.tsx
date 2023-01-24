@@ -9,7 +9,7 @@ interface Props {
 function BlogList({ posts }: Props) {
   console.log(posts.length);
   return (
-    <div>
+    <div className="flex w-full">
       {posts.map((post) => (
         <PostPreview key={post._id} post={post} />
       ))}
@@ -22,11 +22,12 @@ interface PostPreview {
 }
 
 function PostPreview({ post }: PostPreview) {
+  console.log(post);
   return (
-    <div className="flex flex-col group cursor-pointer">
+    <div className="relative w-full h-80 drop-shadow-xl group cursor-pointer">
       <Link
         href={`/blog/${post.slug}`}
-        className="relative w-full h-80 drop-shadow-xl group-hover:scale-105 transition-transform duration-200 ease-out"
+        className="group-hover:scale-105 transition-transform duration-200 ease-out"
       >
         {post.mainImage && (
           <Image
@@ -36,7 +37,7 @@ function PostPreview({ post }: PostPreview) {
             fill
           />
         )}
-        <div className="absolute bottom-0 w-full bg-opacity-20 bg-black rounded drop-shadow-lg text-white p-5 flex justify-between">
+        <div className="absolute bottom-0 w-full bg-opacity-20 bg-black rounded drop-shadow-lg p-5 flex justify-between">
           <div>
             <p className="font-bold">{post.title}</p>
             <p>
@@ -48,14 +49,15 @@ function PostPreview({ post }: PostPreview) {
             </p>
           </div>
           <div className="flex flex-col md:flex-row gap-y-2 md:gap-x-2">
-            {post.topics.map((topic) => (
-              <div
-                key={topic._id}
-                className="bg-[#f7ab0a] text-center text-black px-3 py-1 rounded-full text-sm font-semibold"
-              >
-                <p>{topic.title}</p>
-              </div>
-            ))}
+            {post?.topics &&
+              post.topics.map((topic) => (
+                <div
+                  key={topic._id}
+                  className="bg-[#f7ab0a] text-center text-black px-3 py-1 rounded-full text-sm font-semibold"
+                >
+                  <p>{topic.title}</p>
+                </div>
+              ))}
           </div>
         </div>
       </Link>

@@ -1,7 +1,7 @@
 import { SchemaTypeDefinition } from 'sanity';
 import post from './post';
-import topic from './topic';
+import topics from './topics';
 
-const blogSchema: SchemaTypeDefinition[] = [post, topic];
+const blogSchema: SchemaTypeDefinition[] = [post, topics];
 
 export default blogSchema;
