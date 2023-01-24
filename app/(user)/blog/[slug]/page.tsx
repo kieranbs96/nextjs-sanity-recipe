@@ -1,17 +1,8 @@
 import { previewData } from 'next/headers';
-import { groq } from 'next-sanity';
-import { client, getPostBySlug } from 'lib/sanity.client';
+import { getPostBySlug } from 'lib/sanity.client';
 import PreviewSuspense from 'components/PreviewSuspense';
 
-const query = groq`
-    *[_slug == "post"] {
-        ...,
-        author->,
-        topics[]->,
-    }
-`;
-
-export default async function BlogPost({ params }) {
+export default async function BlogPost({ params }: PageProps) {
   if (previewData()) {
     return (
       <PreviewSuspense

@@ -6,6 +6,11 @@ type Base = {
   _updatedAt: string;
 };
 
+type PageProps = {
+  params?: any;
+  children?: React.ReactNode;
+};
+
 interface Post extends Base {
   author: Author;
   body: Block[];
@@ -13,6 +18,28 @@ interface Post extends Base {
   mainImage: Image;
   slug: Slug;
   title: string;
+  description: string;
+}
+
+interface Recipe extends Base {
+  author: Author;
+  body: Block[];
+  cuisine: null;
+  ingredients: Ingredient[];
+  mainImage: Image;
+  slug: Slug;
+  title: string;
+}
+
+interface Ingredient extends Base {
+  ingredient: string;
+  icon: Image;
+  description: string;
+}
+
+interface Cuisine extends Base {
+  cuisine: string;
+  icon: Image;
   description: string;
 }
 
@@ -58,7 +85,7 @@ interface Topic extends Base {
   description: string;
 }
 
-interface MainImage {
+interface Image {
   _type: 'image';
   asset: Reference;
 }

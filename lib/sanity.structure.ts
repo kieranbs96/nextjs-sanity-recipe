@@ -1,6 +1,6 @@
 import { StructureBuilder } from 'sanity/desk';
 
-export const myStructure = (S: StructureBuilder) =>
+export const structure = (S: StructureBuilder) =>
   S.list()
     .title('Site')
     .items([

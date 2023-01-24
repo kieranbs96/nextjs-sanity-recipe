@@ -1,9 +1,8 @@
 import { previewData } from 'next/headers';
-import { getAllPosts } from 'lib/sanity.client';
+import { getAllRecipes } from 'lib/sanity.client';
 import PreviewSuspense from 'components/PreviewSuspense';
-import BlogList from 'components/Blog/BlogList';
-import PreviewBlogList from 'components/PreviewBlogList';
-import { allPostsQuery } from 'lib/sanity.queries';
+import RecipeList from 'components/Recipes/RecipeList';
+import PreviewRecipeList from 'components/Recipes/PreviewRecipeList';
 
 export default async function Home() {
   if (previewData()) {
@@ -17,12 +16,12 @@ export default async function Home() {
           </div>
         }
       >
-        <PreviewBlogList />
+        <PreviewRecipeList />
       </PreviewSuspense>
     );
   }
 
-  const posts = await getAllPosts();
+  const recipes = await getAllRecipes();
 
-  return <BlogList posts={posts} />;
+  return <RecipeList recipes={recipes} />;
 }

@@ -2,7 +2,7 @@ import { previewData } from 'next/headers';
 import { getAllPosts } from 'lib/sanity.client';
 import PreviewSuspense from 'components/PreviewSuspense';
 import BlogList from 'components/Blog/BlogList';
-import PreviewBlogList from 'components/PreviewBlogList';
+import PreviewBlogList from 'components/Blog/PreviewBlogList';
 
 export default async function Home() {
   if (previewData()) {

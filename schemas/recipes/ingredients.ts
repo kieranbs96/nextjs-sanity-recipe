@@ -12,8 +12,8 @@ export default defineType({
   ],
   fields: [
     defineField({
-      name: 'title',
-      title: 'Title',
+      name: 'ingredient',
+      title: 'Ingredient',
       type: 'string',
     }),
     defineField({
