@@ -1,8 +1,7 @@
 import Link from 'next/link';
 
 const styles = {
-  headerText:
-    'text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase',
+  headerText: 'text-lg font-bold leading-relaxed inline-block py-2 whitespace-nowrap uppercase',
 };
 
 function Header() {
@@ -11,22 +10,22 @@ function Header() {
       <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
         <div className="flex items-center space-x-2">
           <Link className={styles.headerText} href="/">
-            Kieran Smith
+            Kieran
           </Link>
         </div>
 
-        <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
-          <li className="mr-[30px] inline-block">
+        <ul className="flex space-x-4 flex-row list-none lg:ml-auto">
+          <li className="inline-block">
             <Link className={styles.headerText} href="/blog">
               Blog
             </Link>
           </li>
-          <li className="mr-[30px] inline-block">
+          <li className="inline-block">
             <Link className={styles.headerText} href="/recipes">
               Recipes
             </Link>
           </li>
-          <li className="mr-[30px] inline-block">
+          <li className="inline-block">
             <Link className={styles.headerText} href="/uses">
               Uses
             </Link>
@@ -37,6 +36,7 @@ function Header() {
             </Link>
           </li>
         </ul>
+        <hr className="border-0 bg-yellow-400 rounded w-full h-1 mt-2" />
       </div>
     </header>
   );

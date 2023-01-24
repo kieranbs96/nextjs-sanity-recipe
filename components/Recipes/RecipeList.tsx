@@ -1,3 +1,4 @@
+import Pill from 'components/Pill';
 import { urlForImage } from 'lib/sanity.image';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -8,11 +9,11 @@ interface Props {
 
 function RecipeList({ recipes }: Props) {
   return (
-    <div className="flex gap-4 w-full">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 w-full">
       {recipes.map((recipe) => (
-        <div key={recipe._id} className="relative w-1/3 h-80 drop-shadow-xl group cursor-pointer">
+        <div key={recipe._id} className="drop-shadow-xl group cursor-pointer">
           <Link
-            href={`/blog/${recipe.slug}`}
+            href={`/recipes/${recipe.slug}`}
             className="group-hover:scale-105 transition-transform duration-200 ease-out rounded"
           >
             {recipe.mainImage && (
@@ -34,16 +35,11 @@ function RecipeList({ recipes }: Props) {
                     <li key={ingredient._id}>{ingredient.ingredient}</li>
                   ))}
                 </ul>
-              </div>
-              <div className="flex flex-col md:flex-row gap-y-2 md:gap-x-2">
                 {recipe?.cuisine &&
                   recipe.cuisine.map((cuisine: Cuisine) => (
-                    <div
-                      key={cuisine._id}
-                      className="bg-yellow-400 text-center text-black px-3 py-1 rounded-full text-sm font-semibold"
-                    >
+                    <Pill key={cuisine._id}>
                       <p>{cuisine.cuisine}</p>
-                    </div>
+                    </Pill>
                   ))}
               </div>
             </div>

@@ -1,6 +1,6 @@
 'use client';
 
-import { allPostsQuery } from 'lib/sanity.queries';
+import { allPostsQuery } from 'lib/queries/blog.queries';
 import { usePreview } from 'lib/sanity.preview';
 import BlogList from './BlogList';
 

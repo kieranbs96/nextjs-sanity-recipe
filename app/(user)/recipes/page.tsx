@@ -1,7 +1,8 @@
 import { previewData } from 'next/headers';
-import { getAllRecipes } from 'lib/sanity.client';
+import { getAllRecipes, getAllIngredients, getAllCuisines } from 'lib/sanity.client';
+import Banner from 'components/Banner';
 import PreviewSuspense from 'components/PreviewSuspense';
-import RecipeList from 'components/Recipes/RecipeList';
+import RecipeFilters from 'components/Recipes/RecipeFilters';
 import PreviewRecipeList from 'components/Recipes/PreviewRecipeList';
 
 export default async function Home() {
@@ -22,11 +23,13 @@ export default async function Home() {
   }
 
   const recipes = await getAllRecipes();
+  const ingredients = await getAllIngredients();
+  const cuisines = await getAllCuisines();
 
   return (
     <div className="flex flex-col w-full">
-      <div>Filters</div>
-      <RecipeList recipes={recipes} />
+      <Banner title="Recipes" subtitle="Mixture of my own & other recipes that I use" />
+      <RecipeFilters ingredients={ingredients} cuisines={cuisines} recipes={recipes} />
     </div>
   );
 }

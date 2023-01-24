@@ -8,12 +8,23 @@
   --green: hsla(127, 8%, 42%, 1);
   --blue: hsla(179, 78%, 42%, 1);
   --pink: hsla(299, 22%, 63%, 1);
+  --yellow: #facc15;
+  --slate: #1e293b;
 }
 
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+}
+
+html {
+  scrollbar-color: var(--yellow) var(--slate);
+  scrollbar-width: thin;
+}
+
+::selection {
+  background: var(--yellow);
 }
 
 html,

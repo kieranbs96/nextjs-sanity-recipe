@@ -1,6 +1,6 @@
 'use client';
 
-import { allRecipesQuery } from 'lib/sanity.queries';
+import { allRecipesQuery } from 'lib/queries/recipe.queries';
 import { usePreview } from 'lib/sanity.preview';
 import RecipeList from './RecipeList';
 

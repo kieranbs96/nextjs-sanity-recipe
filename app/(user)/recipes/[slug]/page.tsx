@@ -22,6 +22,7 @@ export default async function BlogPost({ params }: PageProps) {
   const recipe = await getRecipeBySlug(params.slug);
 
   console.log(recipe);
+  console.log(recipe.body);
 
   return (
     <div>
