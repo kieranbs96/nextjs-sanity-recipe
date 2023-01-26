@@ -43,15 +43,13 @@ function RecipeFilters({
     };
 
     for (const ingredient of recipe.ingredients) {
-      if (selectedIngredients.includes(ingredient.ingredient)) {
-        console.log('passed', recipe.title);
+      if (selectedIngredients.includes(ingredient.name) && ingredient.filterable) {
         matchesCriteria.ingredients = true;
       }
     }
 
     for (const cuisine of recipe.cuisine) {
       if (selectedCuisines.includes(cuisine.cuisine)) {
-        console.log('passed', recipe.title);
         matchesCriteria.cuisine = true;
       }
     }
@@ -66,22 +64,24 @@ function RecipeFilters({
     } else return false;
   });
 
-  console.log(filteredRecipes);
-
   return (
     <>
       <div className="mb-6">
         <div className="flex flex-wrap gap-2 mb-4">
           <h3 className="w-full">Ingredients</h3>
-          {ingredients.map((ingredient) => (
-            <ClickablePill
-              key={ingredient._id}
-              isActive={selectedIngredients.includes(ingredient.ingredient)}
-              onToggle={() => manageFilters('ingredients', ingredient.ingredient)}
-            >
-              {ingredient.ingredient}
-            </ClickablePill>
-          ))}
+          {ingredients.map((ingredient) => {
+            return (
+              ingredient.filterable && (
+                <ClickablePill
+                  key={ingredient._id}
+                  isActive={selectedIngredients.includes(ingredient.name)}
+                  onToggle={() => manageFilters('ingredients', ingredient.name)}
+                >
+                  {ingredient.name}
+                </ClickablePill>
+              )
+            );
+          })}
         </div>
         <div className="flex flex-wrap gap-2">
           <h3 className="w-full">Cuisines</h3>

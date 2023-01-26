@@ -1,4 +1,6 @@
-import { StructureBuilder } from 'sanity/desk';
+import { DefaultDocumentNodeResolver, StructureBuilder } from 'sanity/desk';
+import Iframe from 'sanity-plugin-iframe-pane';
+import { SanityDocumentLike } from 'sanity';
 
 export const structure = (S: StructureBuilder) =>
   S.list()
@@ -22,7 +24,7 @@ export const structure = (S: StructureBuilder) =>
             .title('Recipes')
             .items([
               S.listItem().title('Recipes').child(S.documentTypeList('recipe').title('Recipes')),
-              S.listItem().title('Cuisine').child(S.documentTypeList('cuisine').title('Cuisines')),
+              S.listItem().title('Cuisines').child(S.documentTypeList('cuisine').title('Cuisines')),
               S.listItem()
                 .title('Ingredients')
                 .child(S.documentTypeList('ingredients').title('Ingredients')),
@@ -46,3 +48,26 @@ export const structure = (S: StructureBuilder) =>
             ])
         ),
     ]);
+
+export const getDefaultDocumentNode: DefaultDocumentNodeResolver = (S, { schemaType }) => {
+  if (schemaType === 'post' || schemaType === 'recipe') {
+    const urlMapping = {
+      post: 'blog',
+      recipe: 'recipes',
+    };
+
+    return S.document().views([
+      S.view.form(),
+      S.view
+        .component(Iframe)
+        .options({
+          url: (doc: SanityDocumentLike) => `/${urlMapping[schemaType]}/${doc?.slug?.current}`,
+          defaultSize: 'desktop',
+          reload: {
+            button: true,
+          },
+        })
+        .title('Preview'),
+    ]);
+  }
+};

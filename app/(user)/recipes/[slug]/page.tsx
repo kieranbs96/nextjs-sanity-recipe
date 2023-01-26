@@ -1,6 +1,8 @@
 import { previewData } from 'next/headers';
 import { getRecipeBySlug } from 'lib/sanity.client';
 import PreviewSuspense from 'components/PreviewSuspense';
+import { PortableText } from '@portabletext/react';
+import { RichText } from 'components/PortableText/components';
 
 export default async function BlogPost({ params }: PageProps) {
   if (previewData()) {
@@ -22,12 +24,12 @@ export default async function BlogPost({ params }: PageProps) {
   const recipe = await getRecipeBySlug(params.slug);
 
   console.log(recipe);
-  console.log(recipe.body);
 
   return (
     <div>
       <h1>{recipe.title}</h1>
       <p></p>
+      <PortableText value={recipe.body} components={RichText} />
     </div>
   );
 }

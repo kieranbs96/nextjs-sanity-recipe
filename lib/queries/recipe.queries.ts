@@ -12,7 +12,14 @@ const recipeFields = groq`
   "author": author->,
   mainImage,
   "cuisine": cuisine[]->,
-  "ingredients": ingredients[]->,
+  "ingredients": ingredients[] {
+    unit,
+    fraction,
+    wholeNumber,
+    "name": ingredient->.name,
+    "icon": ingredient->.icon,
+    "filterable": ingredient->.filterable
+  },
   body
 `;
 
@@ -37,5 +44,6 @@ export const allCuisinesQuery = groq`
 export const allIngredientsQuery = groq`
 *[_type == "ingredients"] | order(_createdAt ) {
     ${genericFields}
-    ingredient,
+    name,
+    filterable
 }`;

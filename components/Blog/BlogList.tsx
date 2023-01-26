@@ -7,7 +7,6 @@ interface Props {
 }
 
 function BlogList({ posts }: Props) {
-  console.log(posts.length);
   return (
     <div className="flex w-full">
       {posts.map((post) => (
@@ -22,7 +21,6 @@ interface PostPreview {
 }
 
 function PostPreview({ post }: PostPreview) {
-  console.log(post);
   return (
     <div className="relative w-full h-80 drop-shadow-xl group cursor-pointer">
       <Link

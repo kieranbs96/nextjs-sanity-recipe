@@ -6,7 +6,7 @@ const styles = {
 
 function Header() {
   return (
-    <header className="w-50 w-full top-0 flex flex-wrap items-center justify-between px-2 py-3">
+    <header className="w-full top-0 flex flex-wrap items-center justify-between px-2 py-3">
       <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
         <div className="flex items-center space-x-2">
           <Link className={styles.headerText} href="/">

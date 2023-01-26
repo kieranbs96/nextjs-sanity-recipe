@@ -1,9 +1,5 @@
 function Pill({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="py-2 px-4 shadow-md no-underline rounded-full bg-yellow-400 text-black font-sans font-semibold text-sm border-orange btn-primary mr-2">
-      {children}
-    </div>
-  );
+  return <div className="bg-slate-900 rounded uppercase p-1 font-bold font-mono">{children}</div>;
 }
 
 export default Pill;

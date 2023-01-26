@@ -28,7 +28,7 @@ export default async function Home() {
 
   return (
     <div className="flex flex-col w-full">
-      <Banner title="Recipes" subtitle="Mixture of my own & other recipes that I use" />
+      <Banner title="Recipes" />
       <RecipeFilters ingredients={ingredients} cuisines={cuisines} recipes={recipes} />
     </div>
   );

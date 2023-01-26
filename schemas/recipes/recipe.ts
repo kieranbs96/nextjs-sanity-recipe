@@ -49,12 +49,57 @@ export default defineType({
       name: 'ingredients',
       title: 'Ingredients',
       type: 'array',
-      of: [{ type: 'reference', to: { type: 'ingredients' } }],
-    }),
-    defineField({
-      name: 'publishedAt',
-      title: 'Published at',
-      type: 'datetime',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            {
+              title: 'Ingredient',
+              name: 'ingredient',
+              type: 'reference',
+              to: [{ type: 'ingredients' }],
+            },
+            {
+              name: 'wholeNumber',
+              title: 'Whole Numbers',
+              type: 'number',
+            },
+            {
+              name: 'fraction',
+              title: 'Fraction Amount',
+              type: 'string',
+              options: {
+                list: ['1/2', '1/3', '1/4', '3/4', '2/3'],
+              },
+            },
+            {
+              name: 'unit',
+              title: 'Unit',
+              type: 'string',
+              options: {
+                list: ['cup(s)', 'grams', 'milliliters', 'tablespoon(s)', 'teaspoon(s)'],
+              },
+            },
+          ],
+          preview: {
+            select: {
+              title: 'ingredient.name',
+              name: 'ingredient.name',
+              media: 'ingredient.image',
+              wholeNumber: 'wholeNumber',
+              fraction: 'fraction',
+              unit: 'unit',
+            },
+            prepare({ title, subtitle, media, wholeNumber = '', fraction = '', unit = '' }) {
+              return {
+                title,
+                subtitle: `${wholeNumber} ${fraction} ${unit}`,
+                media,
+              };
+            },
+          },
+        },
+      ],
     }),
     defineField({
       name: 'body',

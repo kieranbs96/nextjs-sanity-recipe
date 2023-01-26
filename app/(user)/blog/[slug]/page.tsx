@@ -21,7 +21,5 @@ export default async function BlogPost({ params }: PageProps) {
 
   const post = await getPostBySlug(params.slug);
 
-  console.log(post);
-
   return <div>...</div>;
 }

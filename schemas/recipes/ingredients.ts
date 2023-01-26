@@ -12,8 +12,8 @@ export default defineType({
   ],
   fields: [
     defineField({
-      name: 'ingredient',
-      title: 'Ingredient',
+      name: 'name',
+      title: 'Name',
       type: 'string',
     }),
     defineField({
@@ -25,6 +25,11 @@ export default defineType({
       name: 'icon',
       title: 'Icon',
       type: 'image',
+    }),
+    defineField({
+      name: 'filterable',
+      title: 'Filterable',
+      type: 'boolean',
     }),
   ],
 });

@@ -32,9 +32,10 @@ interface Recipe extends Base {
 }
 
 interface Ingredient extends Base {
-  ingredient: string;
+  name: string;
   icon: Image;
   description: string;
+  filterable: boolean;
 }
 
 interface Cuisine extends Base {
