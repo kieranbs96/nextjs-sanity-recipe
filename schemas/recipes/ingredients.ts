@@ -31,5 +31,10 @@ export default defineType({
       title: 'Filterable',
       type: 'boolean',
     }),
+    defineField({
+      name: 'reference',
+      title: 'Reference',
+      type: 'string',
+    }),
   ],
 });

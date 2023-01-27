@@ -13,6 +13,7 @@ const postFields = groq`
   "slug": slug.current,
   "author": author->,
   "topics": topics[]->,
+  body
 `;
 
 export const allPostsQuery = groq`

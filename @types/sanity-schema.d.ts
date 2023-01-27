@@ -26,9 +26,14 @@ interface Recipe extends Base {
   body: Block[];
   cuisine: Cuisine[];
   ingredients: Ingredient[];
-  mainImage: Image;
+  mainImage?: Image;
   slug: Slug;
   title: string;
+  description?: string;
+  tags?: Tag[];
+  calories?: number;
+  servings?: number;
+  cookTime?: string;
 }
 
 interface Ingredient extends Base {
@@ -36,6 +41,11 @@ interface Ingredient extends Base {
   icon: Image;
   description: string;
   filterable: boolean;
+  wholeNumber?: number;
+  fraction?: string;
+  unit?: string;
+  reference?: string;
+  instruction?: string;
 }
 
 interface Cuisine extends Base {
@@ -49,6 +59,10 @@ interface Author extends Base {
   image: Image;
   name: string;
   slug: Slug;
+}
+
+interface Tag extends Base {
+  name: string;
 }
 
 interface Image {

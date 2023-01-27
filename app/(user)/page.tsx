@@ -1,6 +1,4 @@
-import {previewData} from 'next/headers';
-import {groq} from 'next-sanity';
-import {client} from 'lib/sanity.client';
+import { previewData } from 'next/headers';
 import PreviewSuspense from 'components/PreviewSuspense';
 
 export default async function Home() {

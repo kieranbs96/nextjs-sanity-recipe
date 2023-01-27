@@ -12,7 +12,7 @@ export const RichText = {
   },
   list: {
     bullet: ({ children }: any) => <ul className="ml-10 py-5 list-disc space-y-5">{children}</ul>,
-    number: ({ children }: any) => <ol className="mt-lg list-decimal">{children}</ol>,
+    number: ({ children }: any) => <ol className="mt-lg list-decimal list-inside">{children}</ol>,
   },
   block: {
     h1: ({ children }: any) => <h1 className="text-5xl py-10 font-bold">{children}</h1>,

@@ -26,6 +26,17 @@ export default defineType({
       },
     }),
     defineField({
+      name: 'description',
+      title: 'Description',
+      type: 'text',
+    }),
+    defineField({
+      name: 'tags',
+      title: 'Tags',
+      type: 'array',
+      of: [{ type: 'reference', to: { type: 'tags' } }],
+    }),
+    defineField({
       name: 'author',
       title: 'Author',
       type: 'reference',
@@ -44,6 +55,21 @@ export default defineType({
       title: 'Cuisine',
       type: 'array',
       of: [{ type: 'reference', to: { type: 'cuisine' } }],
+    }),
+    defineField({
+      name: 'servings',
+      title: 'Servings',
+      type: 'number',
+    }),
+    defineField({
+      name: 'calories',
+      title: 'Calories (per portion)',
+      type: 'number',
+    }),
+    defineField({
+      name: 'cookTime',
+      title: 'Cook Time',
+      type: 'string',
     }),
     defineField({
       name: 'ingredients',
@@ -77,8 +103,20 @@ export default defineType({
               title: 'Unit',
               type: 'string',
               options: {
-                list: ['cup(s)', 'grams', 'milliliters', 'tablespoon(s)', 'teaspoon(s)'],
+                list: [
+                  'cup(s)',
+                  'grams',
+                  'milliliters',
+                  'tablespoon(s)',
+                  'teaspoon(s)',
+                  'clove(s)',
+                ],
               },
+            },
+            {
+              name: 'instruction',
+              title: 'Additional Instructions',
+              type: 'string',
             },
           ],
           preview: {
@@ -89,11 +127,20 @@ export default defineType({
               wholeNumber: 'wholeNumber',
               fraction: 'fraction',
               unit: 'unit',
+              instruction: 'instruction',
             },
-            prepare({ title, subtitle, media, wholeNumber = '', fraction = '', unit = '' }) {
+            prepare({
+              title,
+              subtitle,
+              media,
+              wholeNumber = '',
+              fraction = '',
+              unit = '',
+              instruction = '',
+            }) {
               return {
                 title,
-                subtitle: `${wholeNumber} ${fraction} ${unit}`,
+                subtitle: `${wholeNumber} ${fraction} ${unit} (${instruction})`,
                 media,
               };
             },
@@ -103,7 +150,7 @@ export default defineType({
     }),
     defineField({
       name: 'body',
-      title: 'Body',
+      title: 'Method',
       type: 'blockContent',
     }),
   ],

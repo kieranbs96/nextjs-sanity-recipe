@@ -3,6 +3,7 @@ import { getAllPosts } from 'lib/sanity.client';
 import PreviewSuspense from 'components/PreviewSuspense';
 import BlogList from 'components/Blog/BlogList';
 import PreviewBlogList from 'components/Blog/PreviewBlogList';
+import Banner from 'components/Banner';
 
 export default async function Home() {
   if (previewData()) {
@@ -23,5 +24,10 @@ export default async function Home() {
 
   const posts = await getAllPosts();
 
-  return <BlogList posts={posts} />;
+  return (
+    <>
+      <Banner title={'Blog'} />
+      <BlogList posts={posts} />
+    </>
+  );
 }

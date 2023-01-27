@@ -9,6 +9,8 @@ const genericFields = groq`
 const recipeFields = groq`
   title,
   "slug": slug.current,
+  description,
+  "tags": tags[]->,
   "author": author->,
   mainImage,
   "cuisine": cuisine[]->,
@@ -18,9 +20,14 @@ const recipeFields = groq`
     wholeNumber,
     "name": ingredient->.name,
     "icon": ingredient->.icon,
-    "filterable": ingredient->.filterable
+    "filterable": ingredient->.filterable,
+    "reference": ingredient->.reference,
+    instruction
   },
-  body
+  body,
+  servings,
+  calories,
+  cookTime
 `;
 
 export const allRecipesQuery = groq`
