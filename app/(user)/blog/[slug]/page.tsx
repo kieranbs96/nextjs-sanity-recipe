@@ -32,13 +32,15 @@ export default async function BlogPost({ params }: PageProps) {
           {post.title}
         </h1>
       </header>
-      <Image
-        className="object-contain object-center mx-auto mb-4"
-        src={urlForImage(post.mainImage).url()}
-        alt={post.author.name}
-        width={536}
-        height={354}
-      />
+      {post && post.mainImage && (
+        <Image
+          className="object-contain object-center mx-auto mb-4"
+          src={urlForImage(post.mainImage).url()}
+          alt={post.author.name}
+          width={536}
+          height={354}
+        />
+      )}
       <PortableText value={post.body} components={RichText} />
     </article>
   );

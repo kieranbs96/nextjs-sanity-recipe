@@ -61,7 +61,11 @@ export const getDefaultDocumentNode: DefaultDocumentNodeResolver = (S, { schemaT
       S.view
         .component(Iframe)
         .options({
-          url: (doc: SanityDocumentLike) => `/${urlMapping[schemaType]}/${doc?.slug?.current}`,
+          url: (doc: {
+            slug: {
+              current: string;
+            };
+          }) => `/${urlMapping[schemaType]}/${doc?.slug?.current}`,
           defaultSize: 'desktop',
           reload: {
             button: true,

@@ -69,31 +69,33 @@ function RecipeFilters({
       <div className="mb-6">
         <div className="flex flex-wrap gap-2 mb-4">
           <h3 className="w-full">Ingredients</h3>
-          {ingredients.map((ingredient) => {
-            return (
-              ingredient.filterable && (
-                <ClickablePill
-                  key={ingredient._id}
-                  isActive={selectedIngredients.includes(ingredient.name)}
-                  onToggle={() => manageFilters('ingredients', ingredient.name)}
-                >
-                  {ingredient.name}
-                </ClickablePill>
-              )
-            );
-          })}
+          {ingredients &&
+            ingredients.map((ingredient) => {
+              return (
+                ingredient.filterable && (
+                  <ClickablePill
+                    key={ingredient._id}
+                    isActive={selectedIngredients.includes(ingredient.name)}
+                    onToggle={() => manageFilters('ingredients', ingredient.name)}
+                  >
+                    {ingredient.name}
+                  </ClickablePill>
+                )
+              );
+            })}
         </div>
         <div className="flex flex-wrap gap-2">
           <h3 className="w-full">Cuisines</h3>
-          {cuisines.map((cuisine) => (
-            <ClickablePill
-              key={cuisine._id}
-              isActive={selectedCuisines.includes(cuisine.cuisine)}
-              onToggle={() => manageFilters('cuisine', cuisine.cuisine)}
-            >
-              {cuisine.cuisine}
-            </ClickablePill>
-          ))}
+          {cuisines &&
+            cuisines.map((cuisine) => (
+              <ClickablePill
+                key={cuisine._id}
+                isActive={selectedCuisines.includes(cuisine.cuisine)}
+                onToggle={() => manageFilters('cuisine', cuisine.cuisine)}
+              >
+                {cuisine.cuisine}
+              </ClickablePill>
+            ))}
         </div>
       </div>
       <RecipeList recipes={filteredRecipes} />

@@ -19,7 +19,6 @@ export default defineConfig({
       structure,
       defaultDocumentNode: getDefaultDocumentNode,
     }),
-    ,
     visionTool(),
   ],
   schema: {

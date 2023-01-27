@@ -8,6 +8,7 @@ interface Props {
 }
 
 function RecipeList({ recipes }: Props) {
+  if (recipes && recipes.length) return <div>No recipes were found..</div>;
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 w-full">
       {recipes.map((recipe) => {

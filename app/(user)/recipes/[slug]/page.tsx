@@ -42,13 +42,15 @@ export default async function BlogPost({ params }: PageProps) {
       <Banner title={recipe.title} subtitle={recipe.description} />
       <div className="grid gap-6 grid-cols-1 md:grid-cols-3">
         <div className="col-span-1 flex flex-col">
-          <Image
-            className="object-center w-full"
-            src={urlForImage(recipe.mainImage).url()}
-            alt={recipe.title}
-            width={500}
-            height={500}
-          />
+          {recipe && recipe.mainImage && (
+            <Image
+              className="object-center w-full"
+              src={urlForImage(recipe.mainImage).url()}
+              alt={recipe.title}
+              width={500}
+              height={500}
+            />
+          )}
           <RecipeInfo recipe={recipe} />
         </div>
 
