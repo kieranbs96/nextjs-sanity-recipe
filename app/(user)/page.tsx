@@ -18,5 +18,11 @@ export default async function Home() {
     );
   }
 
-  return <div>Home</div>;
+  return (
+    <div className="p-6">
+      <h1 className="text-center">
+        <span className="wave">👋</span> Hi, my name is Kieran!
+      </h1>
+    </div>
+  );
 }

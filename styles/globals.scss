@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import 'animations';
 
 :root {
   --black: hsla(30, 11%, 4%, 1);
