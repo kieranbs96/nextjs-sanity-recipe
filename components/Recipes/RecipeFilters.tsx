@@ -18,12 +18,14 @@ function RecipeFilters({
 
   const manageFilters = (type: string, value: string) => {
     if (type === 'cuisine') {
+      // If selectedCuisines includes the value, then remove that value from selectedCuisines. Otherwise, add it.
       if (selectedCuisines.includes(value)) {
         setSelectedCuisines([...selectedCuisines.filter((x) => x !== value)]);
       } else {
         setSelectedCuisines([...selectedCuisines, value]);
       }
     } else if (type === 'ingredients') {
+      // If selectedIngredients includes the value, then remove that value from selectedIngredients. Otherwise, add it.
       if (selectedIngredients.includes(value)) {
         setSelectedIngredients([...selectedIngredients.filter((x) => x !== value)]);
       } else {

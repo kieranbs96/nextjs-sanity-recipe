@@ -6,10 +6,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <head />
-      <body className="relative overflow-hidden font-primary bg-slate-800 text-white">
+      <body className="font-primary bg-slate-800 text-white">
         <FontLoader />
         {/* <Header /> */}
-        <main className="min-h-screen w-full">
+        <main className="w-full">
           <div className="container px-4 mx-auto">{children}</div>
         </main>
         <Footer />
