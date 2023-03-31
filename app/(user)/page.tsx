@@ -20,9 +20,14 @@ export default async function Home() {
 
   return (
     <div className="p-6">
-      <h1 className="text-center">
-        <span className="wave">👋</span> Hi, my name is Kieran!
-      </h1>
+      <header className="flex justify-center text-center text-3xl md:text-5xl">
+        <span className="wave mr-6">👋</span>
+        <h1 className="tracking-tighter text-yellow-400">Hello, my name is Kieran!</h1>
+      </header>
+      {/* <div className="intro -mx-4 grid grid-cols-1 gap-y-4 bg-yellow-400 p-4 font-mono text-white md:mx-0 md:p-8 md:text-lg">
+        {`I'm a Web Developer @ Global.
+        `}
+      </div> */}
     </div>
   );
 }

@@ -54,3 +54,9 @@ export const allIngredientsQuery = groq`
     name,
     filterable
 }`;
+
+export const allTagsQuery = groq`
+*[_type == "tags"] | order(_createdAt ) {
+    ${genericFields}
+    name
+}`;

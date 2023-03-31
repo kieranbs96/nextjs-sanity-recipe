@@ -1,4 +1,5 @@
 import '../../styles/globals.scss';
+import 'nprogress/nprogress.css';
 import FontLoader from 'components/FontLoader';
 import Footer from 'components/Footer';
 

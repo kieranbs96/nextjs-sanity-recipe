@@ -3,6 +3,7 @@ import { useRecipeContext } from 'context/RecipeContext';
 import { unitMap } from 'lib/helpers';
 import Link from 'next/link';
 import { useState } from 'react';
+import Scale from './Scale';
 
 function IngredientsList({ ingredients }: { ingredients: Ingredient[] }) {
   const [ingredientsChecklist, setIngredientsChecklist] = useState<string[]>([]);
@@ -19,8 +20,8 @@ function IngredientsList({ ingredients }: { ingredients: Ingredient[] }) {
   return (
     <div className="mb-4">
       <h2 className="text-2xl font-bold mb-4">Ingredients</h2>
-
-      <ul className="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-3">
+      <Scale />
+      <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-3">
         {ingredients &&
           ingredients.map((ingredient) => {
             const { wholeNumber, fraction, unit, name, _id } = ingredient;

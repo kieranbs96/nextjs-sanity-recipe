@@ -1,5 +1,5 @@
 {
-  "name": "nextjs-sanity-portfolio",
+  "name": "nextjs-sanity-recipe-app",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -20,6 +20,7 @@
     "@sanity/image-url": "^1.0.2",
     "@sanity/vision": "^3.0.0",
     "@types/node": "18.11.18",
+    "@types/nprogress": "^0.2.0",
     "@types/react": "18.0.26",
     "@types/react-dom": "18.0.10",
     "autoprefixer": "^10.4.13",
@@ -27,6 +28,7 @@
     "eslint-config-next": "13.1.2",
     "next": "13.1.2",
     "next-sanity": "^4.1.1",
+    "nprogress": "^0.2.0",
     "postcss": "^8.4.21",
     "react": "18.2.0",
     "react-dom": "18.2.0",

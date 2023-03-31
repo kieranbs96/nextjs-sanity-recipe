@@ -17,3 +17,7 @@ export const unitMap = new Map([
   ['kilogram', 'kg'],
   ['inch', 'in'],
 ]);
+
+export const joinClassNames = (classNames: string[], deliminator = ' ') => {
+  return classNames.filter((c) => c).join(deliminator);
+};

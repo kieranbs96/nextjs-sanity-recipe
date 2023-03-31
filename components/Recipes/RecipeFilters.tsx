@@ -1,5 +1,7 @@
 'use client';
 
+import { PlusCircleIcon } from '@heroicons/react/24/solid';
+import Accordion from 'components/Accordion/Accordion';
 import ClickablePill from 'components/ClickablePill';
 import { useState } from 'react';
 import RecipeList from './RecipeList';
@@ -8,13 +10,22 @@ function RecipeFilters({
   ingredients,
   cuisines,
   recipes,
+  tags,
 }: {
   ingredients: Ingredient[];
   cuisines: Cuisine[];
   recipes: Recipe[];
+  tags: Tag[];
 }) {
   const [selectedCuisines, setSelectedCuisines] = useState<string[]>([]);
   const [selectedIngredients, setSelectedIngredients] = useState<string[]>([]);
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
+
+  const clearFilters = () => {
+    setSelectedCuisines([]);
+    setSelectedIngredients([]);
+    setSelectedTags([]);
+  };
 
   const manageFilters = (type: string, value: string) => {
     if (type === 'cuisine') {
@@ -31,17 +42,25 @@ function RecipeFilters({
       } else {
         setSelectedIngredients([...selectedIngredients, value]);
       }
+    } else if (type === 'tags') {
+      // If selectedTags includes the value, then remove that value from selectedTags. Otherwise, add it.
+      if (selectedTags.includes(value)) {
+        setSelectedTags([...selectedTags.filter((x) => x !== value)]);
+      } else {
+        setSelectedTags([...selectedTags, value]);
+      }
     }
   };
 
   const filteredRecipes = recipes.filter((recipe) => {
-    if (!selectedCuisines.length && !selectedIngredients.length) {
+    if (!selectedCuisines.length && !selectedIngredients.length && !selectedTags.length) {
       return true;
     }
 
     const matchesCriteria = {
       cuisine: false,
       ingredients: false,
+      tags: false,
     };
 
     for (const ingredient of recipe.ingredients) {
@@ -56,50 +75,85 @@ function RecipeFilters({
       }
     }
 
-    if (matchesCriteria.cuisine && matchesCriteria.ingredients) {
-      return true;
-    } else if (
-      (matchesCriteria.cuisine && !selectedIngredients.length) ||
-      (matchesCriteria.ingredients && !selectedCuisines.length)
-    ) {
-      return true;
-    } else return false;
+    if (recipe.tags) {
+      for (const tag of recipe.tags) {
+        if (selectedTags.includes(tag.name)) {
+          matchesCriteria.tags = true;
+        }
+      }
+    }
+
+    return (
+      (matchesCriteria.cuisine && matchesCriteria.ingredients && matchesCriteria.tags) ||
+      (matchesCriteria.cuisine && !selectedIngredients.length && !selectedTags.length) ||
+      (matchesCriteria.cuisine && matchesCriteria.ingredients && !selectedTags.length) ||
+      (matchesCriteria.cuisine && !selectedIngredients.length && matchesCriteria.tags) ||
+      (matchesCriteria.ingredients && !selectedCuisines.length && !selectedTags.length) ||
+      (matchesCriteria.ingredients && matchesCriteria.cuisine && !selectedTags.length) ||
+      (matchesCriteria.ingredients && !selectedCuisines.length && matchesCriteria.tags) ||
+      (matchesCriteria.tags && !selectedCuisines.length && !selectedIngredients.length) ||
+      (matchesCriteria.tags && matchesCriteria.cuisine && !selectedIngredients.length) ||
+      (matchesCriteria.tags && !selectedCuisines.length && matchesCriteria.ingredients)
+    );
   });
 
   return (
     <>
-      <div className="mb-6">
-        <div className="flex flex-wrap gap-2 mb-4">
-          <h3 className="w-full">Ingredients</h3>
-          {ingredients &&
-            ingredients.map((ingredient) => {
-              return (
-                ingredient.filterable && (
-                  <ClickablePill
-                    key={ingredient._id}
-                    isActive={selectedIngredients.includes(ingredient.name)}
-                    onToggle={() => manageFilters('ingredients', ingredient.name)}
-                  >
-                    {ingredient.name}
-                  </ClickablePill>
-                )
-              );
-            })}
-        </div>
-        <div className="flex flex-wrap gap-2">
-          <h3 className="w-full">Cuisines</h3>
-          {cuisines &&
-            cuisines.map((cuisine) => (
-              <ClickablePill
-                key={cuisine._id}
-                isActive={selectedCuisines.includes(cuisine.cuisine)}
-                onToggle={() => manageFilters('cuisine', cuisine.cuisine)}
-              >
-                {cuisine.cuisine}
-              </ClickablePill>
-            ))}
-        </div>
+      <div className="mb-4">
+        <Accordion title={'Filter by Ingredients'}>
+          <div className="flex gap-3">
+            {ingredients &&
+              ingredients.map((ingredient) => {
+                return (
+                  ingredient.filterable && (
+                    <ClickablePill
+                      key={ingredient._id}
+                      isActive={selectedIngredients.includes(ingredient.name)}
+                      onToggle={() => manageFilters('ingredients', ingredient.name)}
+                    >
+                      {ingredient.name}
+                    </ClickablePill>
+                  )
+                );
+              })}
+          </div>
+        </Accordion>
+        <Accordion title={'Filter by Cuisines'}>
+          <div className="flex gap-3">
+            {cuisines &&
+              cuisines.map((cuisine) => (
+                <ClickablePill
+                  key={cuisine._id}
+                  isActive={selectedCuisines.includes(cuisine.cuisine)}
+                  onToggle={() => manageFilters('cuisine', cuisine.cuisine)}
+                >
+                  {cuisine.cuisine}
+                </ClickablePill>
+              ))}
+          </div>
+        </Accordion>
+        <Accordion title={'Filter by Tags'}>
+          <div className="flex gap-3">
+            {tags &&
+              tags.map((tag) => (
+                <ClickablePill
+                  key={tag._id}
+                  isActive={selectedTags.includes(tag.name)}
+                  onToggle={() => manageFilters('tags', tag.name)}
+                >
+                  {tag.name}
+                </ClickablePill>
+              ))}
+          </div>
+        </Accordion>
       </div>
+      <button
+        className="mb-4 w-40 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+        onClick={clearFilters}
+      >
+        Clear filters
+      </button>
+
       <RecipeList recipes={filteredRecipes} />
     </>
   );

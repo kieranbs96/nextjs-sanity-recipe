@@ -11,7 +11,6 @@ import RecipeInfo from 'components/Recipes/RecipeInfo';
 import Link from 'next/link';
 import { ArrowLongLeftIcon } from '@heroicons/react/24/solid';
 import RecipeContextProvider from 'context/RecipeContextProvider';
-import Scale from 'components/Recipes/Scale';
 
 export default async function BlogPost({ params }: PageProps) {
   if (previewData()) {
@@ -58,7 +57,6 @@ export default async function BlogPost({ params }: PageProps) {
           </div>
 
           <div className="col-span-2">
-            <Scale />
             <IngredientsList ingredients={recipe.ingredients} />
             <hr className="border-0 bg-yellow-400 rounded w-full h-1 mb-4" />
             <div>

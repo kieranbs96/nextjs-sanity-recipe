@@ -5,6 +5,7 @@ import {
   allCuisinesQuery,
   allIngredientsQuery,
   allRecipesQuery,
+  allTagsQuery,
   recipeBySlugQuery,
 } from './queries/recipe.queries';
 
@@ -55,6 +56,13 @@ export async function getAllCuisines(): Promise<Cuisine[]> {
 export async function getAllIngredients(): Promise<Ingredient[]> {
   if (client) {
     return (await client.fetch(allIngredientsQuery)) || [];
+  }
+  return [];
+}
+
+export async function getAllTags(): Promise<Tag[]> {
+  if (client) {
+    return (await client.fetch(allTagsQuery)) || [];
   }
   return [];
 }
