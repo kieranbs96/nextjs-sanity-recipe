@@ -1,5 +1,9 @@
 import { previewData } from 'next/headers';
+import { getAllRecipes, getAllIngredients, getAllCuisines, getAllTags } from 'lib/sanity.client';
+import Banner from 'components/Banner';
 import PreviewSuspense from 'components/PreviewSuspense';
+import RecipeFilters from 'components/Recipes/RecipeFilters';
+import PreviewRecipeList from 'components/Recipes/PreviewRecipeList';
 
 export default async function Home() {
   if (previewData()) {
@@ -13,21 +17,20 @@ export default async function Home() {
           </div>
         }
       >
-        ...
+        <PreviewRecipeList />
       </PreviewSuspense>
     );
   }
 
+  const recipes = await getAllRecipes();
+  const ingredients = await getAllIngredients();
+  const cuisines = await getAllCuisines();
+  const tags = await getAllTags();
+
   return (
-    <div className="p-6">
-      <header className="flex justify-center text-center text-3xl md:text-5xl">
-        <span className="wave mr-6">👋</span>
-        <h1 className="tracking-tighter text-yellow-400">Hello, my name is Kieran!</h1>
-      </header>
-      {/* <div className="intro -mx-4 grid grid-cols-1 gap-y-4 bg-yellow-400 p-4 font-mono text-white md:mx-0 md:p-8 md:text-lg">
-        {`I'm a Web Developer @ Global.
-        `}
-      </div> */}
+    <div className="flex flex-col w-full">
+      <Banner title="Recipes" />
+      <RecipeFilters ingredients={ingredients} cuisines={cuisines} recipes={recipes} tags={tags} />
     </div>
   );
 }

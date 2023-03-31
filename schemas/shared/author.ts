@@ -6,10 +6,6 @@ export default defineType({
   type: 'document',
   groups: [
     {
-      name: 'blog',
-      title: 'Blog',
-    },
-    {
       name: 'recipe',
       title: 'Recipe',
     },

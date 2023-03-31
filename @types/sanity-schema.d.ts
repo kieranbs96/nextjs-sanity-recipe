@@ -11,16 +11,6 @@ type PageProps = {
   children?: React.ReactNode;
 };
 
-interface Post extends Base {
-  author: Author;
-  body: Block[];
-  topics: Topic[];
-  mainImage: Image;
-  slug: Slug;
-  title: string;
-  description: string;
-}
-
 interface Recipe extends Base {
   author: Author;
   body: Block[];

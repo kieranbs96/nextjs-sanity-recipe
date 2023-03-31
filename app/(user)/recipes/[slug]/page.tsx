@@ -12,7 +12,7 @@ import Link from 'next/link';
 import { ArrowLongLeftIcon } from '@heroicons/react/24/solid';
 import RecipeContextProvider from 'context/RecipeContextProvider';
 
-export default async function BlogPost({ params }: PageProps) {
+export default async function Recipe({ params }: PageProps) {
   if (previewData()) {
     return (
       <PreviewSuspense
