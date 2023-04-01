@@ -36,7 +36,7 @@ export default async function Recipe({ params }: PageProps) {
       <div className="py-4">
         <Link
           className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-yellow-100 border border-yellow-600 rounded-lg shadow-sm cursor-pointer hover:text-white bg-gradient-to-br from-yellow-500 via-yellow-600 to-yellow-600"
-          href="/recipes/"
+          href="/"
         >
           <ArrowLongLeftIcon className="w-6 h-6 mr-2" />
           <span className="relative">Back to Recipes</span>
