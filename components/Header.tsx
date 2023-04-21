@@ -17,7 +17,7 @@ export default function Header() {
         <div className="flex items-center">
           <button
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-            className="flex gap-2 items-center justify-center p-2 rounded-full bg-green-400 dark:bg-yellow-400 "
+            className="cursor-pointer flex gap-2 items-center justify-center p-2 rounded-full bg-green-400 dark:bg-yellow-400 "
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

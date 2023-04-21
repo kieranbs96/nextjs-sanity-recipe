@@ -44,8 +44,7 @@
   "devDependencies": {
     "@sanity/eslint-config-studio": "^2.0.1",
     "eslint": "^8.6.0",
-    "prettier": "^2.8.3",
-    "sanity-codegen": "^1.0.0-alpha.40"
+    "prettier": "^2.8.3"
   },
   "prettier": {
     "semi": true,
