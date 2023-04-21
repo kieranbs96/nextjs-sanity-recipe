@@ -35,7 +35,7 @@ export default async function Recipe({ params }: PageProps) {
     <RecipeContextProvider>
       <Banner title={recipe.title} subtitle={recipe.description} />
       <div className="grid gap-6 grid-cols-1 md:grid-cols-3 ">
-        <div className="col-span-1 flex flex-col p-2 bg-yellow-100 rounded items-center">
+        <div className="col-span-1 flex flex-col p-2 bg-green-100 dark:bg-yellow-100 rounded items-center">
           {recipe && recipe.mainImage && (
             <Image
               className="object-center w-full"
