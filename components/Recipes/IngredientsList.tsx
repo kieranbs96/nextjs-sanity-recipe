@@ -54,7 +54,7 @@ function IngredientsList({ ingredients }: { ingredients: Ingredient[] }) {
                 <span>
                   {ingredient.reference ? (
                     <Link
-                      className="underline decoration-yellow-400 hover:decoration-black"
+                      className="underline decoration-green-400 dark:decoration-yellow-400 hover:decoration-black"
                       href={ingredient.reference}
                       target="_blank"
                     >

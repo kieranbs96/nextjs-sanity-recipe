@@ -1,5 +1,9 @@
 function Pill({ children }: { children: React.ReactNode }) {
-  return <div className="bg-slate-900 rounded uppercase p-1 font-bold font-mono">{children}</div>;
+  return (
+    <div className="bg-green-400 dark:bg-yellow-400 dark:text-slate-800 rounded p-1 font-bold ">
+      {children}
+    </div>
+  );
 }
 
 export default Pill;

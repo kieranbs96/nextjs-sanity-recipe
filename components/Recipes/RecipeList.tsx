@@ -10,12 +10,12 @@ interface Props {
 function RecipeList({ recipes }: Props) {
   if (!recipes || !recipes.length) return <div>No recipes were found..</div>;
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 w-full">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full">
       {recipes.map((recipe) => {
         return (
           <div
             key={recipe._id}
-            className="bg-opacity-20 bg-black drop-shadow-xl group  rounded relative"
+            className="bg-slate-200 dark:bg-slate-800 drop-shadow-lg group rounded-lg relative"
           >
             <Link href={`/recipes/${recipe.slug}`} className="cursor-pointer">
               {recipe.mainImage && (
@@ -44,7 +44,10 @@ function RecipeList({ recipes }: Props) {
                   {recipe && recipe.tags && (
                     <ul className="flex mt-2 gap-2">
                       {recipe?.tags?.map((tag: Tag) => (
-                        <li key={tag._id} className="py-1 px-3 rounded-full bg-green-700">
+                        <li
+                          key={tag._id}
+                          className="py-1 px-3 rounded dark:text-slate-800 bg-green-400 dark:bg-yellow-400"
+                        >
                           {tag.name}
                         </li>
                       ))}

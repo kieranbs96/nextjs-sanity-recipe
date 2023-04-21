@@ -1,9 +1,9 @@
 'use client';
 
-import { PlusCircleIcon } from '@heroicons/react/24/solid';
-import Accordion from 'components/Accordion/Accordion';
 import ClickablePill from 'components/ClickablePill';
+import Dropdown from 'components/Dropdown';
 import { useState } from 'react';
+import FilterOption from './FilterOption';
 import RecipeList from './RecipeList';
 
 function RecipeFilters({
@@ -99,60 +99,54 @@ function RecipeFilters({
 
   return (
     <>
-      <div className="mb-4">
-        <Accordion title={'Filter by Ingredients'}>
-          <div className="flex gap-3">
-            {ingredients &&
-              ingredients.map((ingredient) => {
-                return (
-                  ingredient.filterable && (
-                    <ClickablePill
-                      key={ingredient._id}
-                      isActive={selectedIngredients.includes(ingredient.name)}
-                      onToggle={() => manageFilters('ingredients', ingredient.name)}
-                    >
-                      {ingredient.name}
-                    </ClickablePill>
-                  )
-                );
-              })}
-          </div>
-        </Accordion>
-        <Accordion title={'Filter by Cuisines'}>
-          <div className="flex gap-3">
-            {cuisines &&
-              cuisines.map((cuisine) => (
-                <ClickablePill
-                  key={cuisine._id}
-                  isActive={selectedCuisines.includes(cuisine.cuisine)}
-                  onToggle={() => manageFilters('cuisine', cuisine.cuisine)}
-                >
-                  {cuisine.cuisine}
-                </ClickablePill>
-              ))}
-          </div>
-        </Accordion>
-        <Accordion title={'Filter by Tags'}>
-          <div className="flex gap-3">
-            {tags &&
-              tags.map((tag) => (
-                <ClickablePill
-                  key={tag._id}
-                  isActive={selectedTags.includes(tag.name)}
-                  onToggle={() => manageFilters('tags', tag.name)}
-                >
-                  {tag.name}
-                </ClickablePill>
-              ))}
-          </div>
-        </Accordion>
+      <div className="flex gap-3 mb-4">
+        <Dropdown title="Ingredients">
+          {ingredients &&
+            ingredients.map((ingredient) => {
+              return (
+                ingredient.filterable && (
+                  <FilterOption
+                    key={ingredient._id}
+                    isActive={selectedIngredients.includes(ingredient.name)}
+                    onToggle={() => manageFilters('ingredients', ingredient.name)}
+                  >
+                    {ingredient.name}
+                  </FilterOption>
+                )
+              );
+            })}
+        </Dropdown>
+        <Dropdown title="Cuisines">
+          {cuisines &&
+            cuisines.map((cuisine) => (
+              <FilterOption
+                key={cuisine._id}
+                isActive={selectedCuisines.includes(cuisine.cuisine)}
+                onToggle={() => manageFilters('cuisine', cuisine.cuisine)}
+              >
+                {cuisine.cuisine}
+              </FilterOption>
+            ))}
+        </Dropdown>
+        <Dropdown title="Tags">
+          {tags &&
+            tags.map((tag) => (
+              <FilterOption
+                key={tag._id}
+                isActive={selectedTags.includes(tag.name)}
+                onToggle={() => manageFilters('tags', tag.name)}
+              >
+                {tag.name}
+              </FilterOption>
+            ))}
+        </Dropdown>
       </div>
-      <button
+      {/* <button
         className="mb-4 w-40 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
         onClick={clearFilters}
       >
         Clear filters
-      </button>
+      </button> */}
 
       <RecipeList recipes={filteredRecipes} />
     </>

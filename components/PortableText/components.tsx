@@ -20,7 +20,9 @@ export const RichText = {
     h3: ({ children }: any) => <h1 className="text-3xl py-10 font-bold">{children}</h1>,
     h4: ({ children }: any) => <h1 className="text-2xl py-10 font-bold">{children}</h1>,
     blockquote: ({ children }: any) => (
-      <blockquote className="border-l-yellow-400 border-l-4 pl-5 py-5 my-5">{children}</blockquote>
+      <blockquote className="border-l-green-400 dark:border-l-yellow-400 border-l-4 pl-5 py-5 my-5">
+        {children}
+      </blockquote>
     ),
   },
   marks: {
@@ -31,7 +33,7 @@ export const RichText = {
         <Link
           href={value.href}
           rel={rel}
-          className="underline decoration-yellow-400 hover:decoration-black"
+          className="underline decoration-green-400 dark:decoration-yellow-400 hover:decoration-black"
         >
           {children}
         </Link>

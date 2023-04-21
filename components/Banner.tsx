@@ -1,10 +1,17 @@
+import Link from 'next/link';
+
 function Banner({ title, subtitle }: { title: string; subtitle?: string }) {
   return (
-    <div className="banner mb-4 pt-12 md:px-4 py-4 md:py-12 flex flex-col md:items-center justify-center overflow-hidden relative">
-      <h1 className="text-3xl md:text-5xl font-bold leading-relaxed tracking-tight text-white">
-        {title}
-      </h1>
-      {subtitle && <p className="mt-4 text-lg font-normal text-gray-500 lg:text-xl">{subtitle}</p>}
+    <div className="">
+      <div className="flex items-center mb-4">
+        <Link href="/">
+          <span className="text-grey-800 dark:text-white">Recipes</span>
+        </Link>
+        <span className="text-grey-800 dark:text-text-white mx-2">/</span>
+        <span className="text-green-400 dark:text-yellow-400">{title}</span>
+      </div>
+      <h1 className="text-xl font-bold mb-4">{title}</h1>
+      {subtitle && <p className="text-md mb-8">{subtitle}</p>}
     </div>
   );
 }
