@@ -9,12 +9,12 @@ export default function Dropdown({
   children: React.ReactNode;
 }) {
   const [isOpen, setIsOpen] = useState(false);
-  const popupRef = useRef(null);
-  const buttonRef = useRef(null);
+  const popupRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
   useOnClickOutside(popupRef, (event) => {
     if (!isOpen) return;
-    if (!buttonRef?.current?.contains(event.target)) {
+    if (!buttonRef?.current?.contains(event?.target as Node)) {
       setIsOpen(false);
     }
   });
