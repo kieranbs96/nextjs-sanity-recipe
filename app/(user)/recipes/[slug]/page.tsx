@@ -8,8 +8,6 @@ import IngredientsList from 'components/Recipes/IngredientsList';
 import Image from 'next/image';
 import { urlForImage } from 'lib/sanity.image';
 import RecipeInfo from 'components/Recipes/RecipeInfo';
-import Link from 'next/link';
-import { ArrowLongLeftIcon } from '@heroicons/react/24/solid';
 import RecipeContextProvider from 'context/RecipeContextProvider';
 
 export default async function Recipe({ params }: PageProps) {

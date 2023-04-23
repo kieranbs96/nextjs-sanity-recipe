@@ -11,7 +11,9 @@ export default function Header() {
       <div className="container px-4 flex items-center justify-between">
         <div className="flex items-center">
           <Link href="/">
-            <span className="text-xl font-bold text-green-400 dark:text-yellow-400">Recipes</span>
+            <span className="text-xl font-bold text-green-400 dark:text-yellow-400">
+              My Recipes
+            </span>
           </Link>
         </div>
         <div className="flex items-center">

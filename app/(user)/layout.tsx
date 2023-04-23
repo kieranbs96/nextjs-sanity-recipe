@@ -6,6 +6,7 @@ import Footer from 'components/Footer';
 import Header from '../../components/Header';
 
 import { ThemeProvider } from 'next-themes';
+import Breadcrumb from 'components/Breadcrumb';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -17,6 +18,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Header />
           <main className="w-full">
             <div className="container px-4 mx-auto">
+              <Breadcrumb />
               <div className="my-4 p-4 bg-white dark:bg-slate-900 rounded-xl min-h-[50vh]">
                 {children}
               </div>
