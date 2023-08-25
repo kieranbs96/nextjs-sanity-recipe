@@ -1,6 +1,6 @@
-import { previewData } from 'next/headers';
+// import { previewData } from 'next/headers';
 import { getRecipeBySlug } from 'lib/sanity.client';
-import PreviewSuspense from 'components/PreviewSuspense';
+// import PreviewSuspense from 'components/PreviewSuspense';
 import { PortableText } from '@portabletext/react';
 import { RichText } from 'components/PortableText/components';
 import Banner from 'components/Banner';
@@ -10,22 +10,22 @@ import { urlForImage } from 'lib/sanity.image';
 import RecipeInfo from 'components/Recipes/RecipeInfo';
 import RecipeContextProvider from 'context/RecipeContextProvider';
 
-export default async function Recipe({ params }: PageProps) {
-  if (previewData()) {
-    return (
-      <PreviewSuspense
-        fallback={
-          <div role="status">
-            <p className="text-center text-lg animate-pulse text-[#f7ab0a]">
-              Loading preview data...
-            </p>
-          </div>
-        }
-      >
-        ...
-      </PreviewSuspense>
-    );
-  }
+export default async function Recipe({ params }: { params: { slug: string } }) {
+  // if (previewData()) {
+  //   return (
+  //     <PreviewSuspense
+  //       fallback={
+  //         <div role="status">
+  //           <p className="text-center text-lg animate-pulse text-[#f7ab0a]">
+  //             Loading preview data...
+  //           </p>
+  //         </div>
+  //       }
+  //     >
+  //       ...
+  //     </PreviewSuspense>
+  //   );
+  // }
 
   const recipe = await getRecipeBySlug(params.slug);
 

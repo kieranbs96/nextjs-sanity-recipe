@@ -1,8 +1,10 @@
 'use client';
 
 import ClickablePill from 'components/ClickablePill';
-import Dropdown from 'components/Dropdown';
+
 import { useState } from 'react';
+import { Dropdown } from '../Dropdown';
+import { DropdownMenuCheckboxItem } from '../ui/dropdown-menu';
 import FilterOption from './FilterOption';
 import RecipeList from './RecipeList';
 
@@ -105,13 +107,13 @@ function RecipeFilters({
             ingredients.map((ingredient) => {
               return (
                 ingredient.filterable && (
-                  <FilterOption
+                  <DropdownMenuCheckboxItem
                     key={ingredient._id}
-                    isActive={selectedIngredients.includes(ingredient.name)}
-                    onToggle={() => manageFilters('ingredients', ingredient.name)}
+                    checked={selectedIngredients.includes(ingredient.name)}
+                    onCheckedChange={() => manageFilters('ingredients', ingredient.name)}
                   >
                     {ingredient.name}
-                  </FilterOption>
+                  </DropdownMenuCheckboxItem>
                 )
               );
             })}
@@ -119,25 +121,25 @@ function RecipeFilters({
         <Dropdown title="Cuisines">
           {cuisines &&
             cuisines.map((cuisine) => (
-              <FilterOption
+              <DropdownMenuCheckboxItem
                 key={cuisine._id}
-                isActive={selectedCuisines.includes(cuisine.cuisine)}
-                onToggle={() => manageFilters('cuisine', cuisine.cuisine)}
+                checked={selectedCuisines.includes(cuisine.cuisine)}
+                onCheckedChange={() => manageFilters('cuisine', cuisine.cuisine)}
               >
                 {cuisine.cuisine}
-              </FilterOption>
+              </DropdownMenuCheckboxItem>
             ))}
         </Dropdown>
         <Dropdown title="Tags">
           {tags &&
             tags.map((tag) => (
-              <FilterOption
+              <DropdownMenuCheckboxItem
                 key={tag._id}
-                isActive={selectedTags.includes(tag.name)}
-                onToggle={() => manageFilters('tags', tag.name)}
+                checked={selectedTags.includes(tag.name)}
+                onCheckedChange={() => manageFilters('tags', tag.name)}
               >
                 {tag.name}
-              </FilterOption>
+              </DropdownMenuCheckboxItem>
             ))}
         </Dropdown>
       </div>
